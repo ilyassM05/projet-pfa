@@ -1,0 +1,76 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{Remerciements}{2}{chapter*.1}%
+\contentsline {chapter}{Table des figures}{5}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}Introduction Générale}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Contexte du projet}{6}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Problématique}{6}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Objectifs du projet}{6}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Structure du rapport}{7}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Contexte Général et Étude de l'Existant}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Présentation du domaine}{8}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}L'e-learning : définition et évolution}{8}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}La blockchain dans l'éducation}{8}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Le Deep Learning pour la personnalisation}{8}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}Étude de l'existant}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Plateformes e-learning traditionnelles}{9}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Critique de l'existant}{9}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Solution proposée}{9}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Analyse et Spécification des Besoins}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Identification des acteurs}{10}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Acteurs principaux}{10}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Acteurs secondaires}{10}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Besoins fonctionnels}{10}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Gestion des utilisateurs}{10}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Gestion des cours}{10}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Paiement blockchain}{11}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Certificats NFT}{11}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Recommandations IA}{11}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}Besoins non fonctionnels}{11}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Diagramme de cas d'utilisation}{12}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Conception de l'Application}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Architecture technique}{13}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Architecture en couches}{13}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Structure du projet Flutter}{13}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Conception de la base de données}{13}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Schéma Firestore}{13}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Diagramme de classes}{14}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Conception des Smart Contracts}{14}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}CoursePayment.sol}{14}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}CourseCertificate.sol (ERC-721)}{15}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Conception du modèle Deep Learning}{15}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Architecture du réseau de neurones}{15}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Processus de recommandation}{15}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Diagramme de séquence}{16}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Réalisation et Implémentation}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Environnement de développement}{17}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Outils utilisés}{17}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Technologies utilisées}{17}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Implémentation des fonctionnalités}{18}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Authentification Firebase}{18}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Intégration Web3}{18}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Service de recommandation}{18}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Interfaces utilisateur}{18}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Écrans principaux}{18}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Captures d'écran de l'application}{18}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Écran de connexion}{19}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Page d'accueil}{20}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Détail d'un cours}{21}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Lecteur vidéo}{22}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Profil utilisateur}{23}{subsection.5.4.5}%
+\contentsline {subsection}{\numberline {5.4.6}Interface instructeur}{24}{subsection.5.4.6}%
+\contentsline {section}{\numberline {5.5}Déploiement des Smart Contracts}{24}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Tests et Validation}{25}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Stratégie de test}{25}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Types de tests effectués}{25}{subsection.6.1.1}%
+\contentsline {section}{\numberline {6.2}Résultats des tests}{25}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Validation des performances}{25}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Validation fonctionnelle}{26}{section.6.4}%
+\contentsline {chapter}{Conclusion et Perspectives}{27}{chapter*.17}%
+\contentsline {chapter}{Bibliographie}{29}{chapter*.18}%
+\contentsline {chapter}{\numberline {A}Annexes}{30}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Configuration requise}{30}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Prérequis logiciels}{30}{subsection.A.1.1}%
+\contentsline {subsection}{\numberline {A.1.2}Comptes requis}{30}{subsection.A.1.2}%
+\contentsline {section}{\numberline {A.2}Guide d'installation}{30}{section.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}Étapes d'installation}{30}{subsection.A.2.1}%
+\contentsline {section}{\numberline {A.3}Ressources supplémentaires}{30}{section.A.3}%

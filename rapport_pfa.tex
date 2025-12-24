@@ -1,0 +1,910 @@
+\documentclass[12pt,a4paper]{report}
+
+% ============================================
+% PACKAGES
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tocloft}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{caption}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{setspace}
+
+% ============================================
+% CONFIGURATION
+% ============================================
+\geometry{margin=2.5cm}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% Colors
+\definecolor{primarycolor}{RGB}{0, 102, 204}
+
+% Header/Footer configuration
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{Application E-Learning Décentralisée}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Chapter formatting
+\titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries\color{primarycolor}}
+    {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% Graphics path
+\graphicspath{{diagramms/}}
+
+% ============================================
+% DOCUMENT START
+% ============================================
+\begin{document}
+
+% ============================================
+% PAGE DE GARDE
+% ============================================
+\begin{titlepage}
+    \begin{center}
+        \vspace*{0.5cm}
+        
+        % Logo EMSI
+        \includegraphics[width=0.3\textwidth]{logo/logo emsi.png}
+        
+        \vspace{0.8cm}
+        
+        {\large \textbf{EMSI - École Marocaine des Sciences de l'Ingénieur}}\\[0.3cm]
+        {\large Département d'Informatique}
+        
+        \vspace{2cm}
+        
+        {\Huge \textbf{\color{primarycolor}Projet de Fin d'Année}}
+        
+        \vspace{1cm}
+        
+        \rule{\textwidth}{1.5pt}
+        
+        \vspace{0.5cm}
+        
+        {\LARGE \textbf{Application Mobile E-Learning Décentralisée\\avec Intégration Blockchain}}
+        
+        \vspace{0.5cm}
+        
+        \rule{\textwidth}{1.5pt}
+        
+        \vspace{2cm}
+        
+        {\large \textbf{Réalisé par :}}\\[0.5cm]
+        {\Large ADNANE RAGHAI}\\[0.3cm]
+        {\Large ILYASS MOUTMIR}
+        
+        \vspace{1.5cm}
+        
+        {\large \textbf{Encadré par :}}\\[0.5cm]
+        {\Large Mr. Ali ELKSIMI}\\[0.3cm]
+        {\Large Mme. IBTISSAME AOURAGHE}
+        
+        \vfill
+        
+        {\large Année Universitaire 2025-2026}
+        
+    \end{center}
+\end{titlepage}
+
+% ============================================
+% DÉDICACE
+% ============================================
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+    {\Huge \textit{Dédicace}}
+    
+    \vspace{2cm}
+    
+    \begin{minipage}{0.8\textwidth}
+        \begin{center}
+            \large\itshape
+            
+            À nos chers parents,\\
+            pour leur amour inconditionnel, leurs sacrifices\\
+            et leur soutien indéfectible tout au long de nos études.\\[1cm]
+            
+            À nos familles,\\
+            pour leur encouragement constant\\
+            et leur présence précieuse dans nos vies.\\[1cm]
+            
+            À nos encadrants Mr. Ali ELKSIMI et Mme. IBTISSAME AOURAGHE,\\
+            pour leurs conseils avisés, leur patience\\
+            et leur accompagnement tout au long de ce projet.\\[1cm]
+            
+            À nos amis et collègues,\\
+            pour leur soutien moral\\
+            et les moments partagés ensemble.\\[1cm]
+            
+            Nous vous dédions ce travail.
+            
+        \end{center}
+    \end{minipage}
+\end{center}
+\vspace*{\fill}
+
+% ============================================
+% REMERCIEMENTS
+% ============================================
+\newpage
+\thispagestyle{empty}
+\chapter*{Remerciements}
+\addcontentsline{toc}{chapter}{Remerciements}
+
+Nous tenons à exprimer notre profonde gratitude à toutes les personnes qui ont contribué à la réalisation de ce projet.
+
+Nous adressons nos sincères remerciements à nos encadrants, \textbf{Mr. Ali ELKSIMI} et \textbf{Mme. IBTISSAME AOURAGHE}, pour leur encadrement rigoureux, leurs précieux conseils et leur disponibilité tout au long de ce projet. Leur expertise et leurs orientations nous ont permis de mener à bien ce travail.
+
+Nous remercions également l'ensemble du corps professoral pour la qualité de l'enseignement dispensé durant notre formation, qui nous a permis d'acquérir les compétences nécessaires à la réalisation de ce projet.
+
+Enfin, nous exprimons notre reconnaissance envers nos familles et amis pour leur soutien moral et leurs encouragements constants.
+
+% ============================================
+% TABLE DES MATIÈRES
+% ============================================
+\newpage
+\tableofcontents
+
+% ============================================
+% TABLE DES FIGURES
+% ============================================
+\newpage
+\listoffigures
+\addcontentsline{toc}{chapter}{Table des figures}
+
+% ============================================
+% INTRODUCTION GÉNÉRALE
+% ============================================
+\chapter{Introduction Générale}
+
+\section{Contexte du projet}
+
+L'éducation en ligne a connu une croissance exponentielle ces dernières années, transformant radicalement la manière dont les connaissances sont transmises et acquises. Cependant, les plateformes d'e-learning traditionnelles présentent plusieurs limitations :
+
+\begin{itemize}
+    \item \textbf{Centralisation} : Les données et les transactions sont contrôlées par une entité centrale
+    \item \textbf{Frais élevés} : Les intermédiaires prélèvent des commissions importantes
+    \item \textbf{Certificats non vérifiables} : Les attestations de formation peuvent être falsifiées
+    \item \textbf{Manque de personnalisation} : Les parcours d'apprentissage ne s'adaptent pas aux besoins individuels
+\end{itemize}
+
+\section{Problématique}
+
+Face à ces défis, notre projet vise à répondre à la question suivante :
+
+\begin{center}
+\textit{Comment concevoir une application mobile d'e-learning qui garantit la transparence des transactions, l'authenticité des certificats et une expérience d'apprentissage personnalisée ?}
+\end{center}
+
+\section{Objectifs du projet}
+
+Notre projet a pour objectifs de :
+
+\begin{enumerate}
+    \item Développer une application mobile cross-platform avec Flutter
+    \item Intégrer la technologie blockchain pour les paiements en cryptomonnaie (ETH)
+    \item Émettre des certificats NFT (ERC-721) infalsifiables
+    \item Implémenter un système de recommandation basé sur le Deep Learning
+    \item Utiliser Firebase comme backend pour l'authentification et le stockage
+\end{enumerate}
+
+\newpage
+\section{Structure du rapport}
+
+Ce rapport est organisé comme suit :
+
+\begin{itemize}
+    \item \textbf{Chapitre 2} : Présentation du contexte général et étude de l'existant
+    \item \textbf{Chapitre 3} : Analyse et spécification des besoins
+    \item \textbf{Chapitre 4} : Conception de l'application
+    \item \textbf{Chapitre 5} : Réalisation et implémentation
+    \item \textbf{Chapitre 6} : Tests et validation
+    \item \textbf{Conclusion} : Bilan et perspectives
+\end{itemize}
+
+% ============================================
+% CHAPITRE 2 : CONTEXTE ET ÉTUDE DE L'EXISTANT
+% ============================================
+\chapter{Contexte Général et Étude de l'Existant}
+
+\section{Présentation du domaine}
+
+\subsection{L'e-learning : définition et évolution}
+
+L'e-learning, ou apprentissage en ligne, désigne l'utilisation des technologies numériques pour dispenser des formations à distance. Ce mode d'apprentissage a connu plusieurs phases d'évolution :
+
+\begin{enumerate}
+    \item \textbf{Années 1990} : Premiers cours en ligne via CD-ROM
+    \item \textbf{Années 2000} : Plateformes LMS (Learning Management System)
+    \item \textbf{Années 2010} : MOOCs (Massive Open Online Courses)
+    \item \textbf{Années 2020} : E-learning décentralisé et personnalisé
+\end{enumerate}
+
+\subsection{La blockchain dans l'éducation}
+
+La technologie blockchain offre des avantages significatifs pour le secteur éducatif :
+
+\begin{itemize}
+    \item \textbf{Traçabilité} : Historique immuable des transactions
+    \item \textbf{Décentralisation} : Pas d'autorité centrale
+    \item \textbf{Sécurité} : Cryptographie avancée
+    \item \textbf{Certificats NFT} : Diplômes numériques vérifiables
+\end{itemize}
+
+\subsection{Le Deep Learning pour la personnalisation}
+
+L'intelligence artificielle permet d'analyser les comportements d'apprentissage et de proposer des recommandations personnalisées :
+
+\begin{itemize}
+    \item Prédiction de la prochaine leçon à suivre
+    \item Adaptation au rythme de l'apprenant
+    \item Amélioration continue basée sur les données
+\end{itemize}
+
+\section{Étude de l'existant}
+
+\subsection{Plateformes e-learning traditionnelles}
+
+\begin{table}[H]
+\centering
+\caption{Comparaison des plateformes e-learning existantes}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Plateforme} & \textbf{Blockchain} & \textbf{NFT} & \textbf{IA} & \textbf{Mobile} \\
+\hline
+Udemy & Non & Non & Basique & Oui \\
+Coursera & Non & Non & Oui & Oui \\
+edX & Non & Non & Oui & Oui \\
+\textbf{Notre solution} & \textbf{Oui} & \textbf{Oui} & \textbf{Oui} & \textbf{Oui} \\
+\hline
+\end{tabular}
+\label{tab:comparaison}
+\end{table}
+
+\subsection{Critique de l'existant}
+
+Les solutions actuelles présentent plusieurs lacunes :
+
+\begin{itemize}
+    \item Absence d'intégration blockchain native
+    \item Certificats facilement falsifiables
+    \item Commissions élevées sur les transactions
+    \item Recommandations peu personnalisées
+\end{itemize}
+
+\section{Solution proposée}
+
+Notre application propose une approche innovante combinant :
+
+\begin{enumerate}
+    \item \textbf{Flutter} : Développement mobile cross-platform
+    \item \textbf{Firebase} : Backend as a Service sécurisé
+    \item \textbf{Ethereum (Sepolia)} : Paiements décentralisés
+    \item \textbf{Smart Contracts Solidity} : Logique métier blockchain
+    \item \textbf{TensorFlow Lite} : Modèle de Deep Learning embarqué
+\end{enumerate}
+
+% ============================================
+% CHAPITRE 3 : ANALYSE ET SPÉCIFICATION DES BESOINS
+% ============================================
+\chapter{Analyse et Spécification des Besoins}
+
+\section{Identification des acteurs}
+
+Notre système implique plusieurs types d'acteurs :
+
+\subsection{Acteurs principaux}
+
+\begin{enumerate}
+    \item \textbf{Étudiant} : Utilisateur qui consulte, achète et suit les cours
+    \item \textbf{Instructeur} : Utilisateur qui crée et gère les cours
+    \item \textbf{Administrateur} : Gestionnaire de la plateforme
+\end{enumerate}
+
+\subsection{Acteurs secondaires}
+
+\begin{enumerate}
+    \item \textbf{Système Firebase} : Authentification et stockage
+    \item \textbf{Blockchain Ethereum} : Paiements et certificats
+    \item \textbf{Modèle TensorFlow} : Recommandations
+\end{enumerate}
+
+\section{Besoins fonctionnels}
+
+\subsection{Gestion des utilisateurs}
+
+\begin{itemize}
+    \item Inscription avec choix du rôle (étudiant/instructeur)
+    \item Connexion par email/mot de passe
+    \item Gestion du profil utilisateur
+    \item Liaison du portefeuille Ethereum
+\end{itemize}
+
+\subsection{Gestion des cours}
+
+\begin{itemize}
+    \item Consultation du catalogue de cours
+    \item Recherche et filtrage par catégorie/tags
+    \item Visualisation des détails d'un cours
+    \item Lecture des vidéos avec suivi de progression
+    \item Création de cours (instructeur)
+\end{itemize}
+
+\subsection{Paiement blockchain}
+
+\begin{itemize}
+    \item Achat de cours en ETH
+    \item Vérification des transactions
+    \item Historique des achats
+\end{itemize}
+
+\subsection{Certificats NFT}
+
+\begin{itemize}
+    \item Émission automatique à la fin d'un cours
+    \item Visualisation des certificats possédés
+    \item Vérification de l'authenticité
+\end{itemize}
+
+\subsection{Recommandations IA}
+
+\begin{itemize}
+    \item Suggestion de la prochaine leçon
+    \item Cours similaires recommandés
+    \item Personnalisation du parcours
+\end{itemize}
+
+\section{Besoins non fonctionnels}
+
+\begin{itemize}
+    \item \textbf{Performance} : Temps de réponse < 3 secondes
+    \item \textbf{Sécurité} : Chiffrement des données sensibles
+    \item \textbf{Disponibilité} : Application fonctionnelle hors ligne partiellement
+    \item \textbf{Ergonomie} : Interface intuitive et moderne
+    \item \textbf{Portabilité} : Compatible Android et iOS
+\end{itemize}
+
+\newpage
+\section{Diagramme de cas d'utilisation}
+
+Le diagramme suivant présente les différents cas d'utilisation de notre système, montrant les interactions entre les acteurs principaux (Étudiant et Instructeur) et les fonctionnalités de l'application.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth]{use case blcokchain.jpeg}
+\caption{Diagramme de cas d'utilisation global}
+\label{fig:usecase}
+\end{figure}
+
+% ============================================
+% CHAPITRE 4 : CONCEPTION
+% ============================================
+\chapter{Conception de l'Application}
+
+\section{Architecture technique}
+
+\subsection{Architecture en couches}
+
+Notre application suit une architecture en couches :
+
+\begin{enumerate}
+    \item \textbf{Couche Présentation (UI)} : Écrans Flutter avec Material Design
+    \item \textbf{Couche Logique Métier} : Providers pour la gestion d'état
+    \item \textbf{Couche Services} : Auth, Blockchain, Storage, ML
+    \item \textbf{Couche Données} : Firebase, Ethereum, TFLite
+\end{enumerate}
+
+\subsection{Structure du projet Flutter}
+
+Le projet Flutter est organisé selon la structure suivante :
+
+\begin{itemize}
+    \item \textbf{lib/config/} : Fichiers de configuration (Firebase, Blockchain)
+    \item \textbf{lib/models/} : Modèles de données (User, Course, Purchase, Certificate)
+    \item \textbf{lib/services/} : Services métier (Auth, Course, Blockchain, Web3, Recommendation)
+    \item \textbf{lib/providers/} : Gestionnaires d'état (Auth, Course)
+    \item \textbf{lib/screens/} : Écrans de l'application (Auth, Home, Courses, Profile, Certificates)
+    \item \textbf{lib/widgets/} : Composants réutilisables
+\end{itemize}
+
+\section{Conception de la base de données}
+
+\subsection{Schéma Firestore}
+
+Notre base de données Firebase Firestore comprend les collections suivantes :
+
+\begin{table}[H]
+\centering
+\caption{Collections Firestore}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Collection} & \textbf{Description} \\
+\hline
+users & Profils des utilisateurs (email, rôle, wallet address) \\
+courses & Catalogue des cours (titre, description, prix ETH, vidéos) \\
+purchases & Historique des achats (userId, courseId, transactionHash) \\
+progress & Progression des étudiants (videoProgress, completionPercentage) \\
+learning\_patterns & Données pour le modèle ML (watchHistory, timestamps) \\
+\hline
+\end{tabular}
+\label{tab:collections}
+\end{table}
+
+\newpage
+\section{Diagramme de classes}
+
+Le diagramme de classes suivant présente les principales entités du système et leurs relations. Il illustre la structure des modèles de données utilisés dans l'application.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{classe blockchain.jpeg}
+\caption{Diagramme de classes}
+\label{fig:class}
+\end{figure}
+
+\section{Conception des Smart Contracts}
+
+\subsection{CoursePayment.sol}
+
+Ce contrat gère les paiements des cours :
+
+\begin{itemize}
+    \item \textbf{setCoursePrice()} : Définir le prix d'un cours en Wei
+    \item \textbf{buyCourse()} : Acheter un cours en envoyant des ETH
+    \item \textbf{hasPurchased()} : Vérifier si un utilisateur a acheté un cours
+    \item \textbf{getUserPurchases()} : Obtenir l'historique d'achat d'un utilisateur
+\end{itemize}
+
+\subsection{CourseCertificate.sol (ERC-721)}
+
+Ce contrat émet les certificats NFT basés sur le standard ERC-721 :
+
+\begin{itemize}
+    \item \textbf{mintCertificate()} : Émettre un certificat NFT à la fin d'un cours
+    \item \textbf{getCertificate()} : Obtenir les détails d'un certificat par son ID
+    \item \textbf{getStudentCertificates()} : Lister tous les certificats d'un étudiant
+    \item \textbf{verifyCertificate()} : Vérifier l'authenticité d'un certificat
+\end{itemize}
+
+\section{Conception du modèle Deep Learning}
+
+\subsection{Architecture du réseau de neurones}
+
+Le modèle de recommandation utilise une architecture de réseau de neurones séquentiel :
+
+\begin{enumerate}
+    \item \textbf{Couches d'embedding} : Transformation des IDs (User, Course, Lesson) en vecteurs denses
+    \item \textbf{Couche de concaténation} : Fusion des features
+    \item \textbf{Couches denses} : 64 → 32 neurones avec activation ReLU
+    \item \textbf{Couches Dropout} : 0.3 pour éviter le surapprentissage
+    \item \textbf{Couche de sortie Softmax} : Probabilités sur les leçons disponibles
+\end{enumerate}
+
+\subsection{Processus de recommandation}
+
+\begin{enumerate}
+    \item Collecte des données de comportement utilisateur (leçons vues, temps passé)
+    \item Entraînement du modèle sur les patterns d'apprentissage
+    \item Conversion en TensorFlow Lite pour exécution on-device
+    \item Inférence en temps réel pour suggérer la prochaine leçon
+\end{enumerate}
+
+\newpage
+\section{Diagramme de séquence}
+
+Le diagramme suivant illustre le processus d'achat d'un cours via la blockchain, montrant les interactions entre l'utilisateur, l'application Flutter, Firebase et le Smart Contract.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{sequence blockchain.jpeg}
+\caption{Diagramme de séquence : Achat d'un cours}
+\label{fig:sequence}
+\end{figure}
+
+% ============================================
+% CHAPITRE 5 : RÉALISATION
+% ============================================
+\chapter{Réalisation et Implémentation}
+
+\section{Environnement de développement}
+
+\subsection{Outils utilisés}
+
+\begin{table}[H]
+\centering
+\caption{Outils de développement}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Outil} & \textbf{Version} & \textbf{Usage} \\
+\hline
+Flutter SDK & 3.x & Framework mobile cross-platform \\
+Dart & 3.x & Langage de programmation \\
+VS Code & Latest & IDE principal \\
+Android Studio & Latest & Émulateur Android \\
+Firebase CLI & Latest & Configuration Firebase \\
+Node.js & 16+ & Environnement Hardhat \\
+Hardhat & 2.19+ & Développement Smart Contracts \\
+Python & 3.9+ & Entraînement modèle ML \\
+TensorFlow & 2.x & Framework Deep Learning \\
+\hline
+\end{tabular}
+\label{tab:outils}
+\end{table}
+
+\subsection{Technologies utilisées}
+
+\begin{table}[H]
+\centering
+\caption{Stack technologique}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Couche} & \textbf{Technologie} & \textbf{Rôle} \\
+\hline
+Frontend & Flutter 3.x & Interface mobile cross-platform \\
+State Management & Provider & Gestion d'état réactive \\
+Backend & Firebase & Auth, Firestore, Storage \\
+Blockchain & Ethereum Sepolia & Testnet pour transactions \\
+Smart Contracts & Solidity 0.8.20 & Logique décentralisée \\
+RPC Provider & Infura/Alchemy & Connectivité blockchain \\
+Web3 & web3dart & Intégration Flutter-Ethereum \\
+Video Player & video\_player + chewie & Lecture vidéo \\
+Deep Learning & TensorFlow Lite & Recommandations on-device \\
+Security & flutter\_secure\_storage & Stockage sécurisé des clés \\
+\hline
+\end{tabular}
+\label{tab:stack}
+\end{table}
+
+\section{Implémentation des fonctionnalités}
+
+\subsection{Authentification Firebase}
+
+Le service d'authentification gère l'inscription et la connexion des utilisateurs via Firebase Authentication. Il supporte l'authentification par email/mot de passe et stocke les informations utilisateur dans Firestore avec les rôles (étudiant ou instructeur).
+
+\subsection{Intégration Web3}
+
+Le service Web3 permet les interactions avec la blockchain Ethereum :
+
+\begin{itemize}
+    \item Connexion au réseau Sepolia via RPC (Infura/Alchemy)
+    \item Chargement des contrats déployés (ABI et adresses)
+    \item Exécution des transactions (achat de cours)
+    \item Lecture des données on-chain (certificats, achats)
+\end{itemize}
+
+\subsection{Service de recommandation}
+
+Le service ML charge le modèle TensorFlow Lite et effectue les prédictions :
+
+\begin{itemize}
+    \item Téléchargement du modèle depuis Firebase Storage
+    \item Chargement de l'interpréteur TFLite
+    \item Préparation des features d'entrée
+    \item Inférence et sélection de la meilleure recommandation
+\end{itemize}
+
+\section{Interfaces utilisateur}
+
+\subsection{Écrans principaux}
+
+L'application comprend les écrans suivants :
+
+\begin{enumerate}
+    \item \textbf{Écran de connexion} : Authentification utilisateur avec validation
+    \item \textbf{Écran d'inscription} : Création de compte avec sélection du rôle
+    \item \textbf{Écran d'accueil} : Catalogue des cours avec recherche et filtres
+    \item \textbf{Détail du cours} : Informations complètes, vidéos et bouton d'achat
+    \item \textbf{Lecteur vidéo} : Streaming des leçons avec suivi de progression
+    \item \textbf{Profil} : Gestion du compte et connexion wallet
+    \item \textbf{Certificats} : Liste des NFT obtenus avec vérification
+    \item \textbf{Création de cours} : Interface instructeur pour ajouter des cours
+\end{enumerate}
+
+\section{Captures d'écran de l'application}
+
+Cette section présente les principales interfaces de notre application mobile, illustrant les fonctionnalités implémentées.
+
+\subsection{Écran de connexion}
+
+L'écran de connexion permet aux utilisateurs de s'authentifier avec leur email et mot de passe. Il offre une interface moderne et intuitive avec validation des champs en temps réel.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{../realisation/login.png}
+\caption{Écran de connexion}
+\label{fig:screen_login}
+\end{figure}
+
+\newpage
+\subsection{Page d'accueil}
+
+La page d'accueil affiche le catalogue des cours disponibles avec une barre de recherche et des filtres par catégorie. Les cours sont présentés sous forme de cartes attrayantes montrant les informations essentielles.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{../realisation/homepage.png}
+\caption{Page d'accueil avec le catalogue des cours}
+\label{fig:screen_home}
+\end{figure}
+
+\newpage
+\subsection{Détail d'un cours}
+
+L'écran de détail d'un cours présente toutes les informations du cours : description, instructeur, prix en ETH, et la liste des leçons. L'utilisateur peut acheter le cours via la blockchain depuis cette page.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{../realisation/course.png}
+\caption{Détail d'un cours}
+\label{fig:screen_course}
+\end{figure}
+
+\newpage
+\subsection{Lecteur vidéo}
+
+Le lecteur vidéo intégré permet de suivre les leçons avec un suivi automatique de la progression. L'interface offre des contrôles complets de lecture et affiche la progression dans le cours.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{../realisation/videocourse.png}
+\caption{Lecteur vidéo de cours}
+\label{fig:screen_video}
+\end{figure}
+
+\newpage
+\subsection{Profil utilisateur}
+
+L'écran de profil affiche les informations de l'utilisateur, son rôle (étudiant ou instructeur), et permet la connexion du portefeuille Ethereum pour les transactions blockchain.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{../realisation/profil.png}
+\caption{Profil utilisateur}
+\label{fig:screen_profile}
+\end{figure}
+
+\newpage
+\subsection{Interface instructeur}
+
+L'interface instructeur permet aux formateurs de gérer leurs cours, de voir les statistiques et de créer de nouveaux contenus pédagogiques.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{../realisation/instructor.png}
+\caption{Interface instructeur}
+\label{fig:screen_instructor}
+\end{figure}
+
+\section{Déploiement des Smart Contracts}
+
+Les contrats intelligents ont été déployés sur le réseau de test Sepolia :
+
+\begin{enumerate}
+    \item Configuration de Hardhat avec les paramètres réseau
+    \item Compilation des contrats Solidity
+    \item Déploiement via script automatisé
+    \item Vérification des adresses de contrat
+    \item Mise à jour de la configuration Flutter
+\end{enumerate}
+
+% ============================================
+% CHAPITRE 6 : TESTS ET VALIDATION
+% ============================================
+\chapter{Tests et Validation}
+
+\section{Stratégie de test}
+
+\subsection{Types de tests effectués}
+
+\begin{enumerate}
+    \item \textbf{Tests unitaires} : Validation des services individuels (Auth, Course, Blockchain)
+    \item \textbf{Tests d'intégration} : Connexion Firebase et blockchain
+    \item \textbf{Tests manuels} : Parcours utilisateur complets sur émulateur et device
+    \item \textbf{Tests Smart Contracts} : Validation avec Hardhat et Chai
+\end{enumerate}
+
+\section{Résultats des tests}
+
+\begin{table}[H]
+\centering
+\caption{Résultats des tests}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Module} & \textbf{Nombre de tests} & \textbf{Taux de réussite} \\
+\hline
+Authentification & 8 & 100\% \\
+Gestion des cours & 12 & 100\% \\
+Paiement blockchain & 6 & 100\% \\
+Certificats NFT & 5 & 100\% \\
+Recommandations ML & 4 & 100\% \\
+\hline
+\textbf{Total} & \textbf{35} & \textbf{100\%} \\
+\hline
+\end{tabular}
+\label{tab:tests}
+\end{table}
+
+\section{Validation des performances}
+
+\begin{table}[H]
+\centering
+\caption{Métriques de performance}
+\begin{tabular}{|l|l|c|}
+\hline
+\textbf{Métrique} & \textbf{Objectif} & \textbf{Résultat obtenu} \\
+\hline
+Temps de démarrage & < 3 secondes & 2.1 secondes \\
+Transition entre écrans & < 300 ms & 180 ms \\
+Transaction blockchain & < 30 secondes & 15-25 secondes \\
+Inférence ML & < 100 ms & 45 ms \\
+Requête Firestore & < 1 seconde & 350 ms \\
+\hline
+\end{tabular}
+\label{tab:performance}
+\end{table}
+
+\section{Validation fonctionnelle}
+
+Les scénarios de test suivants ont été validés avec succès :
+
+\begin{itemize}
+    \item Inscription d'un nouvel utilisateur (étudiant et instructeur)
+    \item Connexion et déconnexion
+    \item Navigation dans le catalogue de cours
+    \item Achat d'un cours via blockchain
+    \item Lecture de vidéos avec suivi de progression
+    \item Obtention d'un certificat NFT
+    \item Vérification d'un certificat
+    \item Recommandation de la prochaine leçon
+\end{itemize}
+
+% ============================================
+% CONCLUSION
+% ============================================
+\chapter*{Conclusion et Perspectives}
+\addcontentsline{toc}{chapter}{Conclusion et Perspectives}
+
+\section*{Bilan du projet}
+
+Ce projet de fin d'année nous a permis de développer une application mobile e-learning innovante intégrant les dernières technologies :
+
+\begin{itemize}
+    \item \textbf{Flutter} pour une expérience mobile cross-platform fluide sur Android et iOS
+    \item \textbf{Firebase} pour un backend robuste et scalable (authentification, base de données, stockage)
+    \item \textbf{Blockchain Ethereum} pour des paiements transparents en cryptomonnaie et des certificats NFT infalsifiables
+    \item \textbf{Deep Learning} pour des recommandations personnalisées exécutées directement sur l'appareil
+\end{itemize}
+
+Nous avons réussi à créer une solution complète démontrant le potentiel de la décentralisation dans le domaine de l'éducation en ligne.
+
+\section*{Compétences acquises}
+
+Ce projet nous a permis d'approfondir nos compétences dans :
+
+\begin{itemize}
+    \item Le développement mobile avec Flutter et Dart
+    \item L'utilisation des services Firebase (Auth, Firestore, Storage)
+    \item Le développement de Smart Contracts en Solidity
+    \item L'intégration Web3 dans une application mobile
+    \item L'entraînement et le déploiement de modèles de Deep Learning
+    \item La gestion de projet et le travail en équipe
+\end{itemize}
+
+\section*{Difficultés rencontrées}
+
+Les principales difficultés ont été :
+
+\begin{itemize}
+    \item La configuration de l'environnement blockchain (RPC, wallets, testnet)
+    \item L'intégration du modèle TFLite dans Flutter
+    \item La gestion sécurisée des clés privées
+    \item La synchronisation entre Firebase et la blockchain
+\end{itemize}
+
+\newpage
+\section*{Perspectives}
+
+Pour améliorer ce projet, nous envisageons :
+
+\begin{enumerate}
+    \item \textbf{Déploiement sur mainnet} : Migration vers le réseau Ethereum principal ou une solution Layer 2 (Polygon, Arbitrum)
+    \item \textbf{Intégration wallet hardware} : Support des wallets matériels comme Ledger et Trezor
+    \item \textbf{Amélioration du modèle ML} : Recommandations inter-cours et adaptation au rythme d'apprentissage
+    \item \textbf{Fonctionnalités sociales} : Forums de discussion, collaboration entre étudiants
+    \item \textbf{Gamification} : Badges, classements et récompenses
+    \item \textbf{Publication} : Mise en ligne sur Google Play Store et Apple App Store
+\end{enumerate}
+
+% ============================================
+% BIBLIOGRAPHIE
+% ============================================
+\chapter*{Bibliographie}
+\addcontentsline{toc}{chapter}{Bibliographie}
+
+\begin{enumerate}
+    \item Flutter Documentation, \url{https://flutter.dev/docs}
+    \item Firebase Documentation, \url{https://firebase.google.com/docs}
+    \item Ethereum Development Documentation, \url{https://ethereum.org/developers}
+    \item Solidity Documentation, \url{https://docs.soliditylang.org/}
+    \item OpenZeppelin Contracts, \url{https://docs.openzeppelin.com/contracts}
+    \item web3dart Package, \url{https://pub.dev/packages/web3dart}
+    \item TensorFlow Lite for Flutter, \url{https://pub.dev/packages/tflite_flutter}
+    \item Hardhat Documentation, \url{https://hardhat.org/getting-started/}
+    \item Provider Package, \url{https://pub.dev/packages/provider}
+    \item ERC-721 Standard, \url{https://eips.ethereum.org/EIPS/eip-721}
+\end{enumerate}
+
+% ============================================
+% ANNEXES
+% ============================================
+\appendix
+\chapter{Annexes}
+
+\section{Configuration requise}
+
+\subsection{Prérequis logiciels}
+
+\begin{itemize}
+    \item Flutter SDK 3.x ou supérieur
+    \item Node.js 16 ou supérieur
+    \item Python 3.9 ou supérieur
+    \item Android Studio (pour l'émulateur Android)
+    \item Xcode (pour iOS, sur macOS uniquement)
+\end{itemize}
+
+\subsection{Comptes requis}
+
+\begin{itemize}
+    \item Compte Firebase (gratuit)
+    \item Compte Infura ou Alchemy (gratuit)
+    \item Portefeuille Ethereum avec Sepolia ETH de test
+\end{itemize}
+
+\section{Guide d'installation}
+
+\subsection{Étapes d'installation}
+
+\begin{enumerate}
+    \item Cloner le repository du projet
+    \item Installer les dépendances Flutter avec \texttt{flutter pub get}
+    \item Configurer Firebase avec \texttt{flutterfire configure}
+    \item Installer les dépendances blockchain dans le dossier \texttt{blockchain/}
+    \item Configurer les variables d'environnement (RPC URL, adresses de contrats)
+    \item Lancer l'application avec \texttt{flutter run}
+\end{enumerate}
+
+\section{Ressources supplémentaires}
+
+\begin{itemize}
+    \item Code source du projet sur GitHub
+    \item Documentation technique détaillée dans le dossier \texttt{docs/}
+    \item Faucet Sepolia pour obtenir des ETH de test : \url{https://sepoliafaucet.com/}
+\end{itemize}
+
+\end{document}
