@@ -37,8 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // Initialize regular data
       await courseProvider.initialize();
 
-      // Initialize AI Recommendations
-      await _recommendationService.loadModel();
+      // Load recommendations (category-based)
       if (authProvider.currentUser != null) {
         final recs = await _recommendationService.getRecommendations(
           authProvider.currentUser!.userId,

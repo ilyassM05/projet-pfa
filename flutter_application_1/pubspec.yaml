@@ -1,5 +1,5 @@
 name: elearning_dapp
-description: "Decentralized E-Learning Mobile App with Blockchain & AI"
+description: "Decentralized E-Learning Mobile App with Blockchain"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -56,9 +56,6 @@ dependencies:
   cached_network_image: ^3.3.1
   shimmer: ^3.0.0
   
-  # Deep Learning
-  tflite_flutter: ^0.12.1
-  
   # Utils
   intl: ^0.20.2
   uuid: ^4.3.3
@@ -90,12 +87,6 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # ML Model assets for recommendations
-  assets:
-    - assets/model/recommendation_model.tflite
-    - assets/model/label_encoders.json
-    - assets/model/course_similarity_model.tflite
-    - assets/model/course_similarity_encoders.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
